@@ -19,7 +19,7 @@
         <java.version>17</java.version>
         <retrofit.version>2.11.0</retrofit.version>
         <org.mapstruct.version>1.6.3</org.mapstruct.version>
-        <selenium-java.version>4.26.0</selenium-java.version>
+        <selenium-java.version>4.27.0</selenium-java.version>
         <jsoup.version>1.18.1</jsoup.version>
     </properties>
 

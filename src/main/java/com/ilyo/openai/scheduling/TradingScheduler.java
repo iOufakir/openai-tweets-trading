@@ -19,7 +19,7 @@ public class TradingScheduler {
   @Scheduled(cron = "${app.schedule.trading-crypto-cron-expression}")
   public void startAppScheduler() {
     log.info("[Auto trading] Current execution time: {}", LocalDateTime.now());
-    tradingService.startCryptoTrading(CoinToken.POL);
+    tradingService.startCryptoTrading(CoinToken.ETH);
   }
 
 }

@@ -24,7 +24,7 @@ public class OpenAIUtils {
       """;
 
   public static final String AI_PROMPT_CRYPTO_TRADING_USER = """
-      You are a helpful Financial assistant, that answer and analyse articles, latest news and financial data.
+      You are a helpful Financial assistant, that answer and analyzes articles, latest news and financial data.
       Consider checking financial health, Yahoo data, and industry trends, any recent news or events affecting will be appreciated.
       
       Context: I am considering trading a cryptocurrency called "{0}", so is it a good idea to buy or sell "{0}" crypto based on the {2}?

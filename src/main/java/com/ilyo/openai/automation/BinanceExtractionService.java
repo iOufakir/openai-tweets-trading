@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 @Slf4j
-public class BinanceExtractionService {
+public class BinanceExtractionService implements AutomationService {
 
   private static final String BINANCE_FEAR_GREED_SELECTOR = "body div .feed-layout-main > div > div:nth-child(2) > div";
   private static final String BINANCE_FEAR_GREED_INDEX_URL = "https://www.binance.com/en/square/fear-and-greed-index";
@@ -27,6 +27,7 @@ public class BinanceExtractionService {
 
   @SneakyThrows
   public FearGreedIndex getFearGreedIndex() {
+    initialize();
     webDriver.get(BINANCE_FEAR_GREED_INDEX_URL);
 
     final var wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
@@ -49,4 +50,9 @@ public class BinanceExtractionService {
     return numbers;
   }
 
+  @Override
+  public void chooseTab() {
+    // Always the first tab
+    webDriver.switchTo().window(webDriver.getWindowHandles().iterator().next());
+  }
 }

@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 @Slf4j
-public class GoogleNewsExtractionService {
+public class GoogleNewsExtractionService implements AutomationService {
 
   public static final String GOOGLE_NEWS_SELECTOR = "main div:nth-child(2) > c-wiz article a[href^='./read/']";
   public static final String GOOGLE_ARTICLE_SELECTOR =
@@ -32,6 +33,7 @@ public class GoogleNewsExtractionService {
 
   @SneakyThrows
   public List<String> extractGoogleNews(final String url, final int maxArticles) {
+    initialize();
     webDriver.get(url);
     final var wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(GOOGLE_NEWS_SELECTOR)));
@@ -57,6 +59,18 @@ public class GoogleNewsExtractionService {
     }
     log.info("Retrieved articles: {}", articlesText.size());
     return articlesText;
+  }
+
+  @Override
+  public void chooseTab() {
+    Object[] windowHandles = webDriver.getWindowHandles().toArray();
+    if (windowHandles.length == 2) {
+      webDriver.switchTo().newWindow(WindowType.TAB);
+    }
+
+    // Switch to the last tab
+    windowHandles = webDriver.getWindowHandles().toArray();
+    webDriver.switchTo().window((String) windowHandles[2]);
   }
 
 }
