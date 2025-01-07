@@ -1,6 +1,6 @@
 # Introduction
 
-This repository is about a sample project using OpenAI, Twitter API, Selenium and other external tools.
+This repository is about a sample project using OpenAI, Twitter API, Selenium and other external tools, in order to help trade cryptocurrencies based on tweets and news content.
 
 The original idea was to create a job scheduler that will be executed each X seconds to publish and reply to tweets using OpenAI. 
 However, the project also supports trading cryptocurrencies by leveraging the tweets and news content.

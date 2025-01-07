@@ -36,6 +36,7 @@ api:
       - 0xPolygonFdn
       - cz_binance
       - brian_armstrong
+      - WatcherGuru
     tweets-max-results: 10
 
 springdoc:

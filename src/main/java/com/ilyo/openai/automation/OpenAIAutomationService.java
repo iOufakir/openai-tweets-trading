@@ -41,7 +41,7 @@ public class OpenAIAutomationService implements AutomationService {
     scrollBy(webDriver, secureRandom.nextInt(500, 800));
     randomSleep(5000, 10_000);
 
-    final var wait = new WebDriverWait(webDriver, Duration.ofSeconds(secureRandom.nextInt(5, 12)));
+    final var wait = new WebDriverWait(webDriver, Duration.ofSeconds(secureRandom.nextInt(10, 20)));
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(CHATGPT_DIV_SELECTOR)));
     // To react as human
     scrollBy(webDriver, secureRandom.nextInt(500, 801));
